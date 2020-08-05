@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="chart_title_text_size">18sp</dimen>
+    <dimen name="chart_width">300dp</dimen>
+    <dimen name="inside_title_text_size">20sp</dimen>
+    <dimen name="input_linear_padding">16dp</dimen>
+
+    <dimen name="margin_xxxxlarge">48dp</dimen>
+    <dimen name="margin_xxxlarge">40dp</dimen>
+    <dimen name="margin_xxlarge">32dp</dimen>
+    <dimen name="margin_xlarge">24dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_xsmall">4dp</dimen>
+    <dimen name="margin_xxsmall">2dp</dimen>
+    <dimen name="image_size">100dp</dimen>
+    <dimen name="greeting_text_size">40sp</dimen>
+    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="activity_horizontal_margin">8dp</dimen>
+</resources>

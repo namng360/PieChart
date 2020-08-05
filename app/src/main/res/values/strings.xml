@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">PieChart</string>
+    <string name="pie_chart_title">Calories Burned vs. Calories Consumed</string>
+    <string name="inside_title">Input the \n numbers below!</string>
+    <string name="burn">Burn.</string>
+    <string name="cons">Cons.</string>
+    <string name="add">Add</string>
+
+
+    <string name="greeting">Good morning!️</string>
+    <string name="how_was_your">How was Your night?</string>
+    <string name="force_day_mode">Force day mode</string>
+    <string name="force_night_mode">Force night mode</string>
+    <string name="follow_phone_style">Follow phone style</string>
+    <string name="follow_save_mode">Follow save mode</string>
+    <string name="check_current_mode">Check current mode</string>
+    <string name="check_current_mode_result_night">Mode when last check was pressed: Night mode</string>
+    <string name="check_current_mode_result_day">Mode when last check was pressed: Day mode</string>
+    <string name="check_current_mode_result_other">Mode when last check was pressed: Unidentified</string>
+    <string name="long_text">This is a quick tutorial on how to highlight all the occurrences of a keyword provided by the user during a search.  We will use SpannableString to achieve this.  First set up a basic layout with a EditText and a TextView. Below is the XML for the same.</string>
+</resources>

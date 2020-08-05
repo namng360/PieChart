@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ds">
+        <attr name="backgroundcolor" format="color"/>
+        <attr name="cardbackground" format="color"/>
+        <attr name="textcolor" format="color"/>
+        <attr name="tintcolor" format="color"/>
+        <attr name="buttoncolor" format="color"/>
+        <attr name="cardcolor" format="color"/>
+        <attr name="buttoncardcolor" format="color"/>
+        <attr name="cardtextcolor" format="color"/>
+        <attr name="textkanjicolor" format="color"/>
+        <attr name="backgroundcircle" format="color"/>
+        <attr name="backgroundcard" format="color"/>
+        <attr name="backgroundcardkun" format="color"/>
+        <attr name="backgroundcardon" format="color"/>
+        <attr name="bgcircle" format="color"/>
+        <attr name="textexerciese" format="color"/>
+        <attr name="textcolordetail" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="FuriganaView">
+        <attr name="android:text"/>
+        <attr name="android:maxLines"/>
+        <attr name="android:textAlignment"/>
+        <attr name="android:lineSpacingExtra"/>
+        <attr name="android:layout_marginEnd"/>
+        <attr name="android:layout_marginLeft"/>
+        <attr name="android:layout_marginRight"/>
+        <attr name="android:layout_marginStart"/>
+        <attr name="furiganaSize" format="dimension"/>
+    </declare-styleable>
+</resources>

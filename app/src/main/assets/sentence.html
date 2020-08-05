@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+    <!--        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
+
+    <style id="furigana-config"></style>
+    <style id="show-highlight"></style>
+    <style id="ruby-copy"></style>
+    <style type='text/css'>
+        body {
+            font-size: <myFontSize>px;
+        }
+
+        body {
+            font-family: "Helvetica Neue",Roboto,"Segoe UI",sans-serif;
+            color: <bodyColor>;
+
+            line-height: 2.2em;
+            letter-spacing: 3px;
+        }
+
+        rt {
+            color: <rubyColor>;
+        }
+
+        rt::selection {
+            display: none;
+        }
+
+        span {
+            text-decoration: underline;
+            -webkit-text-decoration-color: rgb(28,134,238); /* Safari */
+            text-decoration-color: rgb(28,134,238);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<b>
+    <nguyenthelinh>
+</b>
+
+<script type="text/javascript">
+    document.addEventListener('selectionchange',function() {
+                var selection = window.getSelection();
+                document.getElementById("ruby-copy").innerHTML = "rt { display: none; }";
+                if (window.JSInterface != null) {
+                    var rect = selection.getRangeAt(0).getBoundingClientRect();
+                    window.JSInterface.onTextChange(selection.toString(), rect.left, rect.top, rect.right, rect.bottom);
+                }
+                document.getElementById("ruby-copy").innerHTML = "";
+    });
+
+  function enableFurigana() {
+        clearStateRuby();
+
+        document.getElementById("furigana-config").innerHTML = "";
+    }
+
+    function disableFurigana() {
+        clearStateRuby();
+        document.getElementById("furigana-config").innerHTML = "rt { display: none; }";
+    }
+
+    function clearStateRuby() {
+        var rubyTags = document.getElementsByTagName("ruby");
+        if (rubyTags == null) {
+            return;
+        }
+
+        for (var i = 0; i < rubyTags.length; i++) {
+            var rtTags = rubyTags[i].getElementsByTagName("rt");
+            if (rtTags == null || rtTags.length == 0) {
+                break;
+            };
+
+            var firstRt = rtTags[0];
+            firstRt.style.display = "";
+        }
+    }
+
+    function registerRubyEvent() {
+        var rubyTags = document.getElementsByTagName("ruby");
+        window.DEMO.execute(document.text());
+        if (rubyTags == null) {
+            return;
+        }
+
+        for (var i = 0; i < rubyTags.length; i++) {
+            rubyTags[i].addEventListener("click", null);
+
+            let spanTags = rubyTags[i].getElementsByTagName("span");
+            if (spanTags != null && spanTags.length > 0) {
+                spanTags[0].addEventListener("click", null);
+            }
+        }
+    }
+
+	var dictWins = document.getElementsByTagName("span");
+    for (var i = 0; i < dictWins.length; i++) {
+         var selection = window.getSelection();
+         dictWins[i].addEventListener("click", function (e) {
+            var contentHtml = e.currentTarget.innerHTML;
+            var content = '';
+
+            content = contentHtml.replace(/<rt.*?<\/rt>/g, "");
+            content = content.replace(/<.*?>/g, "");
+
+            content = content.trim();
+            if (content != '') {
+               if (window.JSInterface) {
+                   var rect = selection.getRangeAt(0).getBoundingClientRect();
+                   window.JSInterface.onClickText(content, rect.left, rect.top, rect.right, rect.bottom);
+               }
+            }
+         });
+    }
+
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+
+        document.getElementById("ruby-copy").innerHTML = "rt { display: none; }";
+
+        window.event.clipboardData.setData('text', window.getSelection().toString());
+
+        document.getElementById("ruby-copy").innerHTML = "";
+    });
+
+    window.oncontextmenu = function(event) {
+             event.preventDefault();
+             event.stopPropagation();
+             return false;
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
+
+    var xDown = null;
+    var yDown = null;
+
+    function handleTouchStart(evt) {
+        xDown = evt.changedTouches[0].clientX;
+        yDown = evt.changedTouches[0].clientY;
+    };
+
+    function handleTouchMove(evt) {
+        if ( ! xDown || ! yDown ) {
+            return;
+        }
+
+        var xUp = evt.changedTouches[0].clientX;
+        var yUp = evt.changedTouches[0].clientY;
+
+        var xDiff = xDown - xUp;
+        var yDiff = yDown - yUp;
+
+        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+            if ( xDiff > 0 ) {
+                if (window.JSInterface) {
+                   window.JSInterface.onClickText("VOIKY_RIGHT", "", "", "", "");
+               }
+            } else {
+                if (window.JSInterface) {
+                   window.JSInterface.onClickText("VOIKY_LEFT", "", "", "", "");
+               }
+            }
+        }
+        /* reset values */
+        xDown = null;
+        yDown = null;
+    };
+
+    registerRubyEvent();
+
+</script>
+
+</body>
+</html>
